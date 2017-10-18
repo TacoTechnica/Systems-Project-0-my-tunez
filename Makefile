@@ -1,14 +1,14 @@
-all: music_library.o linked_list.o
-	gcc music_library.o linked_list.o -o music_lib
+all: music_organizer.o linked_list.o
+	gcc music_organizer.o linked_list.o -o music_lib
 
 run: all
 	valgrind --leak-check=yes ./music_lib
 
-music_library.o: music_library.c music_library.h linked_list.h
-	gcc -cg music_library.c
+music_organizer.o: music_organizer.c music_organizer.h linked_list.h
+	gcc -c -g music_organizer.c linked_list.h music_organizer.h
 
 linked_list.o: linked_list.c linked_list.h
-	gcc -cg linked_list.c
+	gcc -c -g linked_list.c linked_list.h
 
 clean:
 	rm music_lib
