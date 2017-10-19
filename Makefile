@@ -1,8 +1,12 @@
 
-DEBUG_FLAG = -g 
+# Set this to nothing if we don't want to compile with debug options
+DEBUG_FLAG = -g
+# Name of our compiled application (huzzah, variables exist)
+APP_NAME = music_lib.out
+
 
 all: music_organizer.o linked_list.o
-	gcc music_organizer.o linked_list.o -o music_lib.out
+	gcc music_organizer.o linked_list.o -o $(APP_NAME)
 
 run: all
 	valgrind --leak-check=yes ./music_lib
@@ -14,5 +18,5 @@ linked_list.o: linked_list.c linked_list.h
 	gcc -c $(DEBUG_FLAG) linked_list.c 
 
 clean:
-	rm music_lib
+	rm $(APP_NAME)
 	rm *.o
