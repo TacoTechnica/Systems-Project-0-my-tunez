@@ -18,5 +18,5 @@ linked_list.o: linked_list.c linked_list.h
 	gcc -c $(DEBUG_FLAG) linked_list.c 
 
 clean:
-	rm $(APP_NAME)
-	rm *.o
+	rm -f $(APP_NAME)
+	rm -f *.o
