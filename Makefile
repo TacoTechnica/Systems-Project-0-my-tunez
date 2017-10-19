@@ -9,7 +9,7 @@ all: music_organizer.o linked_list.o
 	gcc music_organizer.o linked_list.o -o $(APP_NAME)
 
 run: all
-	valgrind --leak-check=yes ./music_lib
+	valgrind --leak-check=yes ./$(APP_NAME)
 
 music_organizer.o: music_organizer.c music_organizer.h linked_list.h
 	gcc -c $(DEBUG_FLAG) music_organizer.c
