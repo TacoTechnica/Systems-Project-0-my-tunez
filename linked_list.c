@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "linked_list.h"
-
 
 struct song_node *create_node() {
 	struct song_node *new_node = malloc(sizeof(struct song_node));
@@ -11,15 +11,18 @@ struct song_node *create_node() {
 
 
 void print_list(struct song_node * head){
-  	while (head){
-    	printf("%d --> ", head->i);
+  	printf("============\nSONG LIST\n");
+    while (head) {
+    	printf("%s : %s\n", head->artist, head->name);
     	head = head->next; // move to the next node
     }
-  	printf("NULL\n"); // print out the null at the end
+  	printf("============\n");
 }
 
-struct song_node * insert_front(struct song_node * head, int cargo){
+struct song_node * insert_front(struct song_node * head, char *name, char *artist){
   	struct song_node * new_head = create_node();
+    strcpy(new_head->name, name);
+    strcpy(new_head->artist, artist);
 	new_head->next = head;
 	return new_head;
 }
@@ -39,12 +42,12 @@ struct song_node * insert_ordered(struct song_node *head, char *name, char *arti
 		head = head->next;
 	}
 	// Now do the same thing but for our name
-	while(head && (strcmp(name, head->next->name) > 0) {
+	while(head && (strcmp(name, head->next->name) > 0)) {
 		head = head->next;
 	}
 	// Now our head is in the right position!
 	// Make a newnode and insert into the list
-	struct song_node *newnode = (struct song_node *) malloc(sizeof(struct node));
+	struct song_node *newnode = (struct song_node *) malloc(sizeof(struct song_node));
 	strcpy(newnode->name, name);
 	strcpy(newnode->artist, artist);
 	newnode->next = head->next;

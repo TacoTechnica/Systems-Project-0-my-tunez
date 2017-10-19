@@ -1,5 +1,4 @@
-struct song_node {char name[256]; char artist[256]; struct node * next;};
-
+struct song_node {char name[256]; char artist[256]; struct song_node *next;};
 
 void print_list(struct song_node *);
 
