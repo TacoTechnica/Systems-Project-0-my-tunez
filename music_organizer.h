@@ -1,5 +1,5 @@
 
-struct song_node *add_song(char *name, char *artist);
+struct song_node *add_song(char *song, char *artist);
 
 struct song_node *search_song(char *song, char *artist);
 
@@ -13,6 +13,6 @@ void print_entire_library();
 
 void print_shuffle();
 
-struct song_node *delete_song(struct song_node *node);
+struct song_node *delete_song(char *song, char *artist);
 
 void delete_all();
