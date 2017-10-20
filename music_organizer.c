@@ -23,7 +23,7 @@ int main() {
 	songs = insert_ordered(songs, "Song Ladasifja", "Bbbb");
 	songs = insert_ordered(songs, "Song M", "Ccc");
 	*/
-
+   printf("length of whole library: %d\n", library_size());
 	add_song("The B song", "Asdf");
 	add_song("The A song", "Asdf");
 	add_song("Song Ladasifja", "Bbbb");
@@ -34,7 +34,8 @@ int main() {
     printf("length of A list: %d\n", list_size(table[0]));
     printf("length of B list: %d\n", list_size(table[1]));
     printf("length of C list: %d\n", list_size(table[2]));
-    printf("length of D list: %d\n", list_size(table[3]));    
+    printf("length of D list: %d\n", list_size(table[3]));
+    printf("length of whole library: %d\n", library_size());
     
 
     struct song_node *found = search_song("The A song", "Asdf");
@@ -130,3 +131,12 @@ void print_shuffle();
 struct song_node *delete_song(char *song, char *artist);
 
 void delete_all();
+
+int library_size(){
+  int sum = 0;
+  int i;
+  for(i = 0; i < 26; i++){
+    sum += list_size(table[i]);
+  }
+  return sum;
+}

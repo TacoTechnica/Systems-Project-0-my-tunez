@@ -16,3 +16,5 @@ void print_shuffle();
 struct song_node *delete_song(char *song, char *artist);
 
 void delete_all();
+
+int library_size();
