@@ -11,12 +11,13 @@ struct song_node *create_node() {
 
 
 void print_list(struct song_node * head){
-  	printf("============\nSONG LIST\n");
     while (head) {
-    	printf("%s : %s\n", head->artist, head->name);
-    	head = head->next; // move to the next node
+        // if null, ignore
+    	if (head->artist[0] && head->name[0]) {
+            printf("%s : %s\n", head->artist, head->name);
+    	}
+        head = head->next; // move to the next node
     }
-  	printf("============\n");
 }
 
 struct song_node * insert_front(struct song_node * head, char *name, char *artist){
@@ -38,7 +39,7 @@ struct song_node * free_list(struct song_node * head){
 
 struct song_node * insert_ordered(struct song_node *head, char *name, char *artist) {
 	// Keep going until we find an artist alphabetically ahead
-	while(head && (head->next) && (strcmp(artist, head->next->artist) > 0)) {
+	while((head->next) && (strcmp(artist, head->next->artist) > 0)) {
 		head = head->next;
 	}
 	// Now do the same thing but for our name

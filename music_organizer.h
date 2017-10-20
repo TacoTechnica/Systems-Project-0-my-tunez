@@ -1,7 +1,7 @@
 
 struct song_node *add_song(char *name, char *artist);
 
-struct song_node *search_song(char *query);
+struct song_node *search_song(char *song, char *artist);
 
 struct song_node *search_artist(char *query);
 
