@@ -31,6 +31,12 @@ int main() {
 
     print_entire_library();
 
+    printf("length of A list: %d\n", list_size(table[0]));
+    printf("length of B list: %d\n", list_size(table[1]));
+    printf("length of C list: %d\n", list_size(table[2]));
+    printf("length of D list: %d\n", list_size(table[3]));    
+    
+
     struct song_node *found = search_song("The A song", "Asdf");
     if (found) {
         printf("Found song! %s by %s\n", found->name, found->artist);

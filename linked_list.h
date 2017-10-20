@@ -9,3 +9,5 @@ struct song_node *insert_ordered(struct song_node * start, char *name, char *art
 
 struct song_node * free_list(struct song_node *);
 
+int list_size(struct song_node *);
+
