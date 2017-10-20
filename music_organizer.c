@@ -1,5 +1,6 @@
 #include<stdio.h>
-
+#include <stdlib.h>
+#include <time.h>
 #include "music_organizer.h"
 #include "linked_list.h"
 
@@ -126,7 +127,17 @@ void print_entire_library() {
     printf("\n================================\n");
 }
 
-void print_shuffle();
+void print_shuffle(int num_songs){
+  lib_size = library_size();
+  srand(time(NULL));
+  int r;
+  int i;
+  while(num_songs){
+    r = rand() % 27;
+    for(i = 0; r > 0){
+  }
+    num_songs--;
+}
 
 struct song_node *delete_song(char *song, char *artist);
 
