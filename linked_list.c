@@ -59,6 +59,7 @@ struct song_node * insert_ordered(struct song_node *head, char *name, char *arti
 
 
 int list_size(struct song_node * head){
+  if (!head) return 0;
   head = head->next; // skip past null node at front
   int i;
   for (i = 0; head; head= head->next, i++);

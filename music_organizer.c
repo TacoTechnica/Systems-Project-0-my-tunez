@@ -48,6 +48,8 @@ int main() {
 
     print_songs_of_certain_artist("Asdf");
     print_songs_under_certain_letter('A');
+    
+    print_shuffle(10);
 
     return 0;
 }
@@ -128,15 +130,24 @@ void print_entire_library() {
 }
 
 void print_shuffle(int num_songs){
-  lib_size = library_size();
   srand(time(NULL));
-  int r;
-  int i;
+  printf("\n====SHUFFLE SONGS====\n\n");
   while(num_songs){
-    r = rand() % 27;
-    for(i = 0; r > 0){
-  }
+    // Get random table
+    struct song_node *head = NULL;
+    while(!list_size(head)) {
+        head = table[rand() % 27];
+    }
+    int index = rand() % list_size(head) + 1;
+    while(index) {
+        head = head->next;
+        index--;
+    }
+    printf("%s : %s\n", head->artist, head->name);
     num_songs--;
+  }
+  printf("\n=====================\n\n");
+    
 }
 
 struct song_node *delete_song(char *song, char *artist);
