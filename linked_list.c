@@ -46,7 +46,6 @@ struct song_node * insert_ordered(struct song_node *head, char *name, char *arti
 	/*while(head && (head->next) && (strcmp(artist, head->next->artist) == 0) && (strcmp(name, head->next->name) > 0)) {
 		head = head->next;
 	}*/
-    printf("FOUND %s -> * %s * -> %s\n", head->name, name, head->next->name);
 	// Now our head is in the right position!
 	// Make a newnode and insert into the list
 	struct song_node *newnode = (struct song_node *) malloc(sizeof(struct song_node));

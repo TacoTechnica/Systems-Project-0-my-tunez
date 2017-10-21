@@ -13,7 +13,7 @@ void print_entire_library();
 
 void print_shuffle();
 
-struct song_node *delete_song(char *song, char *artist);
+void *delete_song(char *song, char *artist);
 
 void delete_all();
 

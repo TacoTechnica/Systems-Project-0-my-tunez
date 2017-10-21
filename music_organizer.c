@@ -27,7 +27,8 @@ int main() {
    printf("length of whole library: %d\n", library_size());
 	add_song("The B song", "Asdf");
 	add_song("The A song", "Asdf");
-	add_song("Song Ladasifja", "Bbbb");
+	add_song("Etudes d'execution transcendante", "Lizst");
+    add_song("Song Ladasifja", "Bbbb");
 	add_song("Song M", "Ccc");
 
     print_entire_library();
@@ -40,6 +41,7 @@ int main() {
     
 
     struct song_node *found = search_song("The A song", "Asdf");
+    printf("Searching for %s by %s:\n", "The A song", "Asdf");
     if (found) {
         printf("Found song! %s by %s\n", found->name, found->artist);
     } else {
@@ -51,6 +53,25 @@ int main() {
     
     print_shuffle(10);
 
+    printf("Deleting The A song: Asdf\n");
+    delete_song("The A song", "Asdf");
+
+    found = search_song("The A song", "Asdf");
+    printf("Searching for %s by %s:\n", "The A song", "Asdf");
+    if (found) {
+        printf("Found song! %s by %s\n", found->name, found->artist);
+    } else {
+        printf("Failed to find song\n");
+    }
+    
+    print_entire_library();
+
+    printf("DELETING ENTIRE LIBRARY\n");
+
+    delete_all();
+
+    print_entire_library();
+    
     return 0;
 }
 
@@ -69,7 +90,6 @@ int artist_to_index(char *artist) {
 
 struct song_node *add_song(char *name, char *artist) {
     int index = artist_to_index(artist);
-    printf("INDEX: %d\n", index);
     return insert_ordered(table[index], name, artist);
 }
 
@@ -121,7 +141,7 @@ void print_entire_library() {
     int i = 0;
     for(i = 0; i < 26; i++) {
         // If the node list isn't empty
-        if (table[i]->next) {
+        if (table[i] && table[i]->next) {
             printf("\n~ %c ~\n ___________\n", 'A' + (char)i );
             print_list(table[i]);
         }
@@ -147,12 +167,27 @@ void print_shuffle(int num_songs){
     num_songs--;
   }
   printf("\n=====================\n\n");
-    
+
 }
 
-struct song_node *delete_song(char *song, char *artist);
+void *delete_song(char *song, char *artist) {
+    struct song_node *head = table[artist_to_index(artist)];
+    while( head && head->next ) {
+        if (!strcmp(head->next->name, song)) {
+            struct song_node *to_delete = head->next;
+            head->next = head->next->next;
+            free(to_delete);
+        }
+        head = head->next;
+    }
+}
 
-void delete_all();
+void delete_all() {
+    int i;
+    for(i = 0; i < 27; i++) {
+        table[i] = free_list( table[i] );
+    }
+}
 
 int library_size(){
   int sum = 0;
